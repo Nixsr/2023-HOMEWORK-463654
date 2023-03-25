@@ -1,6 +1,5 @@
 package it.uniroma3.diadia;
 
-import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -9,21 +8,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import it.uniroma3.diadia.ambienti.Stanza;
-import it.uniroma3.diadia.giocatore.Giocatore;
 
 class PartitaTest {
 	
 	private Partita partita;
-	private Giocatore giocatore;
 	private Stanza stanza1;
-	private Stanza stanza2;
 
 	@BeforeEach
 	void setUp() throws Exception {
 		this.partita = new Partita();
-		this.giocatore = new Giocatore();
 		this.stanza1 = new Stanza("laboratorio");
-		this.stanza2 = new Stanza("atrio");
 	}
 
 	@Test
@@ -49,8 +43,7 @@ class PartitaTest {
 	
 	@Test
 	void testIsFinita_StanzaVincente() {
-		Stanza stanzaVincente = this.partita.getStanzaVincente();
-		this.partita.setStanzaCorrente(stanzaVincente);
+		this.partita.setStanzaCorrente(this.partita.getStanzaVincente());
 		assertTrue(this.partita.isFinita());
 	}
 
