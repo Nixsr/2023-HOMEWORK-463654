@@ -22,7 +22,6 @@ class StanzaTest {
 	
 	private Stanza stanzaConIlMassimoNumeroDiAttrezzi() {
 		Stanza s = new Stanza("Magazzino");
-		Attrezzo a = new Attrezzo("Martello", 2);
 		Attrezzo[] attrezzi = new Attrezzo[10];
 		for(int i=0; i<attrezzi.length; i++) {
 			attrezzi[i] = new Attrezzo("Martello", 2);
