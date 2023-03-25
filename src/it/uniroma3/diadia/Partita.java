@@ -44,7 +44,7 @@ public class Partita {
 	 * @return vero se partita vinta
 	 */
 	public boolean vinta() {
-		return this.getStanzaCorrente()== this.labirinto.getStanzaFinale();
+		return this.getStanzaCorrente() == this.labirinto.getStanzaFinale();
 	}
 
 	/**

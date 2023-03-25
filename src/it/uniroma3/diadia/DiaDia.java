@@ -92,9 +92,7 @@ public class DiaDia {
 	 */
 	private void aiuto() {
 		for(int i=0; i< elencoComandi.length; i++) 
-			//System.out.print(elencoComandi[i]+" ");
 			this.ioConsole.mostraMessaggio(elencoComandi[i]+" ");
-		//System.out.println();
 		this.ioConsole.mostraMessaggio("\n");
 	}
 
@@ -104,19 +102,16 @@ public class DiaDia {
 	 */
 	private void vai(String direzione) {
 		if(direzione==null)
-			//System.out.println("Dove vuoi andare ?");
 			this.ioConsole.mostraMessaggio("Dove vuoi andare ?");
 		Stanza prossimaStanza = null;
 		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
 		if (prossimaStanza == null)
-			//System.out.println("Direzione inesistente");
 			this.ioConsole.mostraMessaggio("Direzione inesistente");
 		else {
 			this.partita.setStanzaCorrente(prossimaStanza);
 			int cfu = this.partita.getGiocatore().getCfu();
 			this.partita.getGiocatore().setCfu(cfu--);
 		}
-		//System.out.println(partita.getStanzaCorrente().getDescrizione());
 		this.ioConsole.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
 	}
 
@@ -124,7 +119,6 @@ public class DiaDia {
 	 * Comando "Fine".
 	 */
 	private void fine() {
-		//System.out.println("Grazie di aver giocato!");  // si desidera smettere
 		this.ioConsole.mostraMessaggio("Grazie di aver giocato!");
 	}
 
