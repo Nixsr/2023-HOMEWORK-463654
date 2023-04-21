@@ -69,5 +69,11 @@ public class Partita {
 
 	public void setGiocatore(Giocatore giocatore) {
 		this.giocatore = giocatore;
+	}
+
+	public boolean giocatoreIsVivo() {
+		if (this.giocatore.getCfu() > 0 && this.getGiocatore().getCfu() <= this.giocatore.getCfuIniziali())
+			return true;
+		return false;
 	}	
 }
