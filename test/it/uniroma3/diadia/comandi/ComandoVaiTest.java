@@ -36,7 +36,7 @@ public class ComandoVaiTest {
 		this.labirinto = new LabirintoBuilder()
 				.addStanzaIniziale("Atrio")
 				.addAttrezzo("martello", 3)
-				.addStanzaFinale("Biblioteca")
+				.addStanzaVincente("Biblioteca")
 				.addAdiacenza("Atrio", "Segreteria", "ovest")
 				.addAdiacenza("Atrio", "Biblioteca", "nord")
 				.getLabirinto();

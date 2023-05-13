@@ -22,7 +22,7 @@ public class LabirintoBuilder {
 		return this;
 	}
 
-	public LabirintoBuilder addStanzaFinale(String nomeStanzaFinale) {
+	public LabirintoBuilder addStanzaVincente(String nomeStanzaFinale) {
 		Stanza finale = new Stanza(nomeStanzaFinale);
 		this.labirinto.setStanzaFinale(finale);
 		this.inserisciUltimaStanzaEAggiorna(finale);

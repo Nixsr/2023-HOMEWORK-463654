@@ -37,6 +37,11 @@ public class DiaDia {
 		this.partita = new Partita(labirinto);
 		this.io = io;
 	}
+	
+	public DiaDia(IO io) {
+		this.io = io;
+		this.partita = new Partita();
+	}
 
 	public void gioca() {
 		String istruzione;
@@ -62,44 +67,7 @@ public class DiaDia {
 		if (!this.partita.giocatoreIsVivo())
 			System.out.println("Hai esaurito i CFU...");
 		return this.partita.isFinita();
-	}   
-
-	// implementazioni dei comandi dell'utente:
-
-	/**
-	 * Stampa informazioni di aiuto.
-	 */
-	//	private void aiuto() {
-	//		for(int i=0; i< elencoComandi.length; i++) 
-	//			this.io.mostraMessaggio(elencoComandi[i]+" ");
-	//		this.io.mostraMessaggio("\n");
-	//	}
-
-	/**
-	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
-	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
-	 */
-	//	private void vai(String direzione) {
-	//		if(direzione==null)
-	//			this.io.mostraMessaggio("Dove vuoi andare ?");
-	//		Stanza prossimaStanza = null;
-	//		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
-	//		if (prossimaStanza == null)
-	//			this.io.mostraMessaggio("Direzione inesistente");
-	//		else {
-	//			this.partita.setStanzaCorrente(prossimaStanza);
-	//			int cfu = this.partita.getGiocatore().getCfu();
-	//			this.partita.getGiocatore().setCfu(cfu--);
-	//		}
-	//		this.io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
-	//	}
-
-	/**
-	 * Comando "Fine".
-	 */
-	//	private void fine() {
-	//		this.io.mostraMessaggio("Grazie di aver giocato!");
-	//	}
+	}
 
 	public static void main(String[] argc) {
 		/* N.B. unica istanza di IOConsole
@@ -107,7 +75,7 @@ public class DiaDia {
 		IO io = new IOConsole();
 		Labirinto labirinto = new LabirintoBuilder()
 				.addStanzaIniziale("LabCampusOne")
-				.addStanzaFinale("Biblioteca")
+				.addStanzaVincente("Biblioteca")
 				.addAdiacenza("LabCampusOne","Biblioteca","ovest")
 				.getLabirinto();
 		DiaDia gioco = new DiaDia(io, labirinto);

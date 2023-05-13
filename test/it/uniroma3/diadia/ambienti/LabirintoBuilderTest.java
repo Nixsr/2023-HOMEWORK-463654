@@ -30,7 +30,7 @@ public class LabirintoBuilderTest {
 	public void testMonolocale() {
 		Labirinto monolocale = labirintoBuilder
 				.addStanzaIniziale(nomeStanzaIniziale)
-				.addStanzaFinale(nomeStanzaIniziale)
+				.addStanzaVincente(nomeStanzaIniziale)
 				.getLabirinto();
 	assertEquals(nomeStanzaIniziale,monolocale.getStanzaIniziale().getNome());
 	assertEquals(nomeStanzaIniziale,monolocale.getStanzaFinale().getNome());
@@ -40,7 +40,7 @@ public class LabirintoBuilderTest {
 	public void testMonolocaleConAttrezzo() {
 		Labirinto monolocale = labirintoBuilder
 				.addStanzaIniziale(nomeStanzaIniziale).addAttrezzo("spada",1)
-				.addStanzaFinale(nomeStanzaIniziale).addAttrezzo("spadina", 3)
+				.addStanzaVincente(nomeStanzaIniziale).addAttrezzo("spadina", 3)
 				.getLabirinto();
 		assertEquals(nomeStanzaIniziale,monolocale.getStanzaIniziale().getNome());
 		assertEquals(nomeStanzaIniziale,monolocale.getStanzaFinale().getNome());
@@ -64,7 +64,7 @@ public class LabirintoBuilderTest {
 	public void testBilocale() {
 		Labirinto bilocale = labirintoBuilder
 				.addStanzaIniziale(nomeStanzaIniziale)
-				.addStanzaFinale(nomeStanzaFinale)
+				.addStanzaVincente(nomeStanzaFinale)
 				.addAdiacenza(nomeStanzaIniziale, nomeStanzaFinale, "nord")
 				.addAdiacenza(nomeStanzaFinale, nomeStanzaIniziale, "sud")
 				.getLabirinto();
@@ -81,7 +81,7 @@ public class LabirintoBuilderTest {
 				.addAdiacenza(nomeStanzaIniziale, "biblioteca", "sud")
 				.addAdiacenza("biblioteca", nomeStanzaIniziale, "nord")
 				.addAttrezzo("libro antico", 5)
-				.addStanzaFinale(nomeStanzaFinale)
+				.addStanzaVincente(nomeStanzaFinale)
 				.addAdiacenza("biblioteca", nomeStanzaFinale, "est")
 				.addAdiacenza(nomeStanzaFinale,"biblioteca" , "ovest")
 				.getLabirinto();	
@@ -269,7 +269,7 @@ public class LabirintoBuilderTest {
 		.addStanzaBloccata("stanza bloccata", "nord", "chiave").addAttrezzo("chiave", 1)
 		.addAdiacenza(nomeStanzaIniziale, "stanza bloccata", "nord")
 		.addAdiacenza("stanza bloccata", nomeStanzaIniziale, "sud")
-		.addStanzaFinale(nomeStanzaFinale)
+		.addStanzaVincente(nomeStanzaFinale)
 		.addAdiacenza("stanza bloccata", nomeStanzaFinale, "nord")
 		.addAdiacenza(nomeStanzaFinale, "stanza bloccata", "sud");
 		Stanza stanzaVincente = new Stanza(nomeStanzaFinale);
@@ -284,7 +284,7 @@ public class LabirintoBuilderTest {
 		.addStanzaBloccata("stanza bloccata", "nord", "chiave")
 		.addAdiacenza(nomeStanzaIniziale, "stanza bloccata", "nord")
 		.addAdiacenza("stanza bloccata", nomeStanzaIniziale, "sud")
-		.addStanzaFinale(nomeStanzaFinale)
+		.addStanzaVincente(nomeStanzaFinale)
 		.addAdiacenza("stanza bloccata", nomeStanzaFinale, "nord")
 		.addAdiacenza(nomeStanzaFinale, "stanza bloccata", "sud");
 		Stanza stanzaBloccata = new StanzaBloccata("stanza bloccata", "nord", "chiave");
@@ -297,7 +297,7 @@ public class LabirintoBuilderTest {
 		
 		Labirinto labirintoCompleto = this.labirintoBuilder
 				.addStanzaIniziale(nomeStanzaIniziale)
-				.addStanzaFinale(nomeStanzaFinale)
+				.addStanzaVincente(nomeStanzaFinale)
 				.addStanza("corridoio")
 				.addAttrezzo("chiave", 1)
 				.addAttrezzo("lanterna", 1)
