@@ -18,7 +18,7 @@ class StanzaBloccataTest {
 	void setUp() throws Exception {
 		this.attrezzoSbloccante = new Attrezzo("chiave", 1);
 		this.stanzaAdiacente = new Stanza("cassaforte");
-		this.stanzaBloccata = new StanzaBloccata("archivio", this.attrezzoSbloccante.getNome() , "nord");
+		this.stanzaBloccata = new StanzaBloccata("archivio", "nord", this.attrezzoSbloccante.getNome());
 		this.stanzaBloccata.impostaStanzaAdiacente("nord", stanzaAdiacente);
 	}
 
@@ -35,12 +35,12 @@ class StanzaBloccataTest {
 	
 	@Test
 	void testGetDescrizioneSenzaAttrezzoSbloccante() {
-		assertEquals("archivio\nUscite:  nord\nAttrezzi nella stanza: \nti serve "+ this.attrezzoSbloccante.getNome() + " per aprire la porta nella direzione nord", this.stanzaBloccata.getDescrizione());
+		assertEquals("archivio\nUscite: []\nAttrezzi nella stanza: []\nti serve "+ this.attrezzoSbloccante.getNome() + " per aprire la porta nella direzione nord", this.stanzaBloccata.getDescrizione());
 	}
 	
 	@Test
 	void testGetDescrizioneConAttrezzoSbloccante() {
 		this.stanzaBloccata.addAttrezzo(attrezzoSbloccante);
-		assertEquals("archivio\nUscite:  nord\nAttrezzi nella stanza: "+this.attrezzoSbloccante+" ", this.stanzaBloccata.getDescrizione());
+		assertEquals("archivio\nUscite: [nord]\nAttrezzi nella stanza: ["+this.attrezzoSbloccante+"]", this.stanzaBloccata.getDescrizione());
 	}
 }

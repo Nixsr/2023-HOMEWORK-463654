@@ -26,6 +26,13 @@ public class Partita {
 		this.stanzaCorrente = labirinto.getStanzaIniziale();
 		this.finita = false;
 	}
+	
+	public Partita(Labirinto labirinto){
+		this.giocatore = new Giocatore();
+		this.labirinto = labirinto;
+		this.stanzaCorrente = this.labirinto.getStanzaIniziale();
+		this.finita = false;
+	}
 
 	public Stanza getStanzaVincente() {
 		return this.labirinto.getStanzaFinale();
@@ -75,5 +82,5 @@ public class Partita {
 		if (this.giocatore.getCfu() > 0 && this.getGiocatore().getCfu() <= this.giocatore.getCfuIniziali())
 			return true;
 		return false;
-	}	
+	}
 }

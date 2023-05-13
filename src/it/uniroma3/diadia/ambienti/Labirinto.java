@@ -46,12 +46,12 @@ public class Labirinto {
 		atrio.addAttrezzo(osso);
 
 		// il gioco comincia nell'atrio
-        stanzaIniziale = atrio;  
-		stanzaFinale = biblioteca;
+        this.stanzaIniziale = atrio;  
+		this.stanzaFinale = biblioteca;
     }
 
 	public Stanza getStanzaIniziale() {
-		return stanzaIniziale;
+		return this.stanzaIniziale;
 	}
 
 	public void setStanzaIniziale(Stanza stanzaIniziale) {
@@ -59,7 +59,7 @@ public class Labirinto {
 	}
 
 	public Stanza getStanzaFinale() {
-		return stanzaFinale;
+		return this.stanzaFinale;
 	}
 
 	public void setStanzaFinale(Stanza stanzaFinale) {

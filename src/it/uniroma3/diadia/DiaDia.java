@@ -1,6 +1,7 @@
 package it.uniroma3.diadia;
 
-import it.uniroma3.diadia.ambienti.Stanza;
+import it.uniroma3.diadia.ambienti.Labirinto;
+import it.uniroma3.diadia.ambienti.LabirintoBuilder;
 import it.uniroma3.diadia.comandi.Comando;
 import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 
@@ -18,7 +19,7 @@ import it.uniroma3.diadia.comandi.FabbricaDiComandiFisarmonica;
 
 public class DiaDia {
 
-	static final private String MESSAGGIO_BENVENUTO = ""+
+	public static final String MESSAGGIO_BENVENUTO = ""+
 			"Ti trovi nell'Universita', ma oggi e' diversa dal solito...\n" +
 			"Meglio andare al piu' presto in biblioteca a studiare. Ma dov'e'?\n"+
 			"I locali sono popolati da strani personaggi, " +
@@ -28,13 +29,12 @@ public class DiaDia {
 			"o regalarli se pensi che possano ingraziarti qualcuno.\n\n"+
 			"Per conoscere le istruzioni usa il comando 'aiuto'.";
 
-	static final private String[] elencoComandi = {"vai", "aiuto", "fine", "prendi", "posa"};
 
 	private Partita partita;
 	private IO io;
 
-	public DiaDia(IO io) {
-		this.partita = new Partita();
+	public DiaDia(IO io, Labirinto labirinto) {
+		this.partita = new Partita(labirinto);
 		this.io = io;
 	}
 
@@ -69,41 +69,48 @@ public class DiaDia {
 	/**
 	 * Stampa informazioni di aiuto.
 	 */
-//	private void aiuto() {
-//		for(int i=0; i< elencoComandi.length; i++) 
-//			this.io.mostraMessaggio(elencoComandi[i]+" ");
-//		this.io.mostraMessaggio("\n");
-//	}
+	//	private void aiuto() {
+	//		for(int i=0; i< elencoComandi.length; i++) 
+	//			this.io.mostraMessaggio(elencoComandi[i]+" ");
+	//		this.io.mostraMessaggio("\n");
+	//	}
 
 	/**
 	 * Cerca di andare in una direzione. Se c'e' una stanza ci entra 
 	 * e ne stampa il nome, altrimenti stampa un messaggio di errore
 	 */
-//	private void vai(String direzione) {
-//		if(direzione==null)
-//			this.io.mostraMessaggio("Dove vuoi andare ?");
-//		Stanza prossimaStanza = null;
-//		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
-//		if (prossimaStanza == null)
-//			this.io.mostraMessaggio("Direzione inesistente");
-//		else {
-//			this.partita.setStanzaCorrente(prossimaStanza);
-//			int cfu = this.partita.getGiocatore().getCfu();
-//			this.partita.getGiocatore().setCfu(cfu--);
-//		}
-//		this.io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
-//	}
+	//	private void vai(String direzione) {
+	//		if(direzione==null)
+	//			this.io.mostraMessaggio("Dove vuoi andare ?");
+	//		Stanza prossimaStanza = null;
+	//		prossimaStanza = this.partita.getStanzaCorrente().getStanzaAdiacente(direzione);
+	//		if (prossimaStanza == null)
+	//			this.io.mostraMessaggio("Direzione inesistente");
+	//		else {
+	//			this.partita.setStanzaCorrente(prossimaStanza);
+	//			int cfu = this.partita.getGiocatore().getCfu();
+	//			this.partita.getGiocatore().setCfu(cfu--);
+	//		}
+	//		this.io.mostraMessaggio(partita.getStanzaCorrente().getDescrizione());
+	//	}
 
 	/**
 	 * Comando "Fine".
 	 */
-//	private void fine() {
-//		this.io.mostraMessaggio("Grazie di aver giocato!");
-//	}
+	//	private void fine() {
+	//		this.io.mostraMessaggio("Grazie di aver giocato!");
+	//	}
 
 	public static void main(String[] argc) {
+		/* N.B. unica istanza di IOConsole
+		di cui sia ammessa la creazione */
 		IO io = new IOConsole();
-		DiaDia gioco = new DiaDia(io);
+		Labirinto labirinto = new LabirintoBuilder()
+				.addStanzaIniziale("LabCampusOne")
+				.addStanzaFinale("Biblioteca")
+				.addAdiacenza("LabCampusOne","Biblioteca","ovest")
+				.getLabirinto();
+		DiaDia gioco = new DiaDia(io, labirinto);
 		gioco.gioca();
 	}
 }
